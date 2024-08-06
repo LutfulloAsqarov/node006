@@ -44,7 +44,7 @@ const userSchema = new Schema(
 );
 
 export const Users = model("user", userSchema);
-const validateUser = (body) => {
+export const validateUser = (body) => {
     const schema = Joi.object({
         fname: Joi.string().required(),
         lname: Joi.string(),

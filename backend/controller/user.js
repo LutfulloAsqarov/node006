@@ -1,20 +1,22 @@
-import { Blogs } from "../models/blogSchema.js";
+// import { Blogs } from "../models/blogSchema.js";
+
+import { Users, validateUser } from "../models/userSchema.js";
 
 class UsersController {
     async get(req, res) {
         try {
-            const blogs = await Users.find();
-            if (!blogs.length) {
+            const users = await Users.find();
+            if (!users.length) {
                 return res.status(400).json({
-                    msg: "Blog is not defined",
+                    msg: "User is not defined",
                     variant: "error",
                     payload: null,
                 });
             }
             res.status(200).json({
-                msg: "All blogs",
+                msg: "All Users",
                 variant: "success",
-                payload: blogs,
+                payload: users,
             });
         } catch {
             res.status(500).json({
@@ -34,11 +36,11 @@ class UsersController {
                     payload: null,
                 });
             }
-            const blog = await Blogs.create(req.body);
+            const user = await Users.create(req.body);
             res.status(201).json({
-                msg: "Blog is created",
+                msg: "User is created",
                 variant: "success",
-                payload: blog,
+                payload: user,
             });
         } catch {
             res.status(500).json({
